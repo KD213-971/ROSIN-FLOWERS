@@ -137,6 +137,25 @@
   font-size: 16px;
   box-sizing: border-box;
 }
+   .order-summary {
+  background: #fff8fa;
+  border: 1px solid #ead5df;
+  border-radius: 16px;
+  padding: 25px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+.order-summary h2 {
+  color: #a86f7c;
+  text-align: center;
+}
+
+#summaryDetails {
+  line-height: 1.9;
+  color: #65434b;
+  white-space: pre-line;
+}
   <style>
     body {
       margin: 0;
@@ -353,6 +372,12 @@ h2 {
     <option value="3 PM - 6 PM">3 PM - 6 PM</option>
     <option value="6 PM - 9 PM">6 PM - 9 PM</option>
   </select>
+</div>
+        <div class="order-summary">
+  <h2>Your Bouquet Summary</h2>
+  <div id="summaryDetails">
+    Select your flowers to see your order summary.
+  </div>
 </div>
   <h2>Total: <span id="total">0</span> AED</h2>
         <p class="delivery-note">
