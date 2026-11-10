@@ -458,12 +458,13 @@ function calculatePrice() {
   const size = document.getElementById(
     "bouquetSize"
   ).selectedOptions[0].text;
-
+const wrappingColor = document.getElementById("wrappingColor").value;
   const message =
     "Hello ROSIN! I would like to order a bouquet.\n\n" +
     "Bouquet Size: " + size + "\n\n" +
     details.join("\n") +
-    "\n\nTotal Stems: " + stems +
+   "\n\nWrapping Color: " + wrappingColor +
+"\nTotal Stems: " + stems 
     "\nTotal Price: " + total + " AED";
 
   const url = "https://wa.me/" + phone +
