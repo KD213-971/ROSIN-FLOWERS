@@ -183,24 +183,36 @@ h2 {
 
 <script>
 function calculatePrice() {
-  const roses = Math.max(0, Math.floor(
-    Number(document.getElementById("roses").value) || 0
-  ));
+  const getQty = (id) => {
+    const input = document.getElementById(id);
+    return input ? Math.max(0, Math.floor(Number(input.value) || 0)) : 0;
+  };
 
-  const tulips = Math.max(0, Math.floor(
-    Number(document.getElementById("tulips").value) || 0
-  ));
+  const roses = getQty("roses");
+  const tulips = getQty("tulips");
+  const lilies = getQty("lilies");
 
-  const lilies = Math.max(0, Math.floor(
-    Number(document.getElementById("lilies").value) || 0
-  ));
+  const extraQty = (selector) => {
+    return Array.from(document.querySelectorAll(selector))
+      .reduce((sum, input) => {
+        return sum + Math.max(0, Math.floor(Number(input.value) || 0));
+      }, 0);
+  };
 
-  const maxStems = Number(
-    document.getElementById("bouquetSize").value
-  );
+  const totalRoses = roses + extraQty(".extraRoseQty");
+  const totalTulips = tulips +
+    extraQty('.extraFlowerQty[data-flower="tulip"]');
+  const totalLilies = lilies +
+    extraQty('.extraFlowerQty[data-flower="lily"]');
 
-  const totalStems = roses + tulips + lilies;
-  const total = roses * 8 + tulips * 12 + lilies * 20;
+  const totalStems = totalRoses + totalTulips + totalLilies;
+
+  const sizeSelect = document.getElementById("bouquetSize");
+  const maxStems = Number(sizeSelect.value);
+
+  const total = totalRoses * 8 +
+                totalTulips * 12 +
+                totalLilies * 20;
 
   const message = document.getElementById("sizeMessage");
 
