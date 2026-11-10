@@ -118,6 +118,8 @@ h2 {
 
 <p id="sizeMessage"></p>
         <h2>Choose Your Flowers</h2>
+        <div class="flowers-grid">
+          <div class="flower-card">
 <img src="images/rose.jpg" alt="Roses" class="flower-image">
   <label>Roses - 8 AED each</label>
         <select id="roseColor">
@@ -129,8 +131,9 @@ h2 {
   <input type="number" id="roses"
          min="0" value="0"
          oninput="calculatePrice()">
-
+</div>
   <br><br>
+          <div class="flower-card">
 <img src="images/tulip.jpg" alt="Tulips" class="flower-image">
   <label>Tulips - 12 AED each</label>
         <select id="tulipColor">
@@ -142,8 +145,9 @@ h2 {
   <input type="number" id="tulips"
          min="0" value="0"
          oninput="calculatePrice()">
-
+</div>
   <br><br>
+          <div class="flower-card">
 <img src="images/lily.jpg" alt="Lilies" class="flower-image">
   <label>Lilies - 20 AED each</label>
         <select id="lilyColor">
@@ -154,7 +158,7 @@ h2 {
   <input type="number" id="lilies"
          min="0" value="0"
          oninput="calculatePrice()">
-
+</div>
   <h2>Total: <span id="total">0</span> AED</h2>
 </div>
 
