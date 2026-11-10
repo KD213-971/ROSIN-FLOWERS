@@ -580,11 +580,46 @@ const giftDetails = giftCard === "Yes"
   ? "\nGift Card: Yes" +
     "\nGift Message: " + (giftMessage || "No message")
   : "\nGift Card: No";
+    const recipientName = document.getElementById("recipientName").value.trim();
+const recipientPhone = document.getElementById("recipientPhone").value.trim();
+const deliveryAddress = document.getElementById("deliveryAddress").value.trim();
+const deliveryDate = document.getElementById("deliveryDate").value;
+const deliveryTime = document.getElementById("deliveryTime").value;
+
+if (
+  !recipientName ||
+  !recipientPhone ||
+  !deliveryAddress ||
+  !deliveryDate ||
+  !deliveryTime
+) {
+  alert("Please complete all delivery details before ordering.");
+  return;
+}
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const selectedDate = new Date(deliveryDate + "T00:00:00");
+
+if (selectedDate < today) {
+  alert("Please select today or a future delivery date.");
+  return;
+}
+
+const deliveryDetails =
+  "\n\nDELIVERY DETAILS" +
+  "\nRecipient: " + recipientName +
+  "\nPhone: " + recipientPhone +
+  "\nAddress: " + deliveryAddress +
+  "\nDate: " + deliveryDate +
+  "\nTime: " + deliveryTime;
   const message =
     "Hello ROSIN! I would like to order a bouquet.\n\n" +
     "Bouquet Size: " + size + "\n\n" +
     details.join("\n") +
-   "\n\nWrapping Color: " + wrappingColor +
+   deliveryDetails +
+"\n\nWrapping Color: " + wrappingColor +
 giftDetails +
 "\nTotal Stems: " + stems 
     "\nTotal Price: " + total + " AED";
