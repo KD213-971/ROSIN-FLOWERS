@@ -102,6 +102,41 @@
 #giftMessageBox {
   margin-top: 20px;
 }
+   .delivery-section {
+  background: #faf1f5;
+  border: 1px solid #ead5df;
+  border-radius: 16px;
+  padding: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.delivery-section h2 {
+  color: #a86f7c;
+}
+
+.delivery-section label {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.delivery-section input,
+.delivery-section textarea,
+.delivery-section select {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  padding: 12px;
+  margin: 0 auto;
+  border: 1px solid #d7b8c6;
+  border-radius: 10px;
+  background: white;
+  font-size: 16px;
+  box-sizing: border-box;
+}
   <style>
     body {
       margin: 0;
@@ -283,6 +318,34 @@ h2 {
       maxlength="300"
       placeholder="Write your special message here..."></textarea>
   </div>
+</div>
+        <div class="delivery-section">
+  <h2>Delivery Details</h2>
+  <p>Where should we deliver your flowers?</p>
+
+  <label for="recipientName">Recipient Name</label>
+  <input type="text" id="recipientName"
+         placeholder="Full name">
+
+  <label for="recipientPhone">Recipient Phone</label>
+  <input type="tel" id="recipientPhone"
+         placeholder="+971 50 123 4567">
+
+  <label for="deliveryAddress">Delivery Address</label>
+  <textarea id="deliveryAddress" rows="3"
+            placeholder="Building, street, area, city"></textarea>
+
+  <label for="deliveryDate">Delivery Date</label>
+  <input type="date" id="deliveryDate">
+
+  <label for="deliveryTime">Preferred Delivery Time</label>
+  <select id="deliveryTime">
+    <option value="">Select delivery time</option>
+    <option value="9 AM - 12 PM">9 AM - 12 PM</option>
+    <option value="12 PM - 3 PM">12 PM - 3 PM</option>
+    <option value="3 PM - 6 PM">3 PM - 6 PM</option>
+    <option value="6 PM - 9 PM">6 PM - 9 PM</option>
+  </select>
 </div>
   <h2>Total: <span id="total">0</span> AED</h2>
         <div style="text-align: center; margin-top: 25px;">
