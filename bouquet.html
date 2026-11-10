@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Build Your Bouquet | ROSIN</title>  
+  <title>Build Your Bouquet | ROSIN</title>
+ 
  <style>
    .order-button {
   background: #a86f7c;
@@ -46,6 +47,29 @@
   .flowers-grid {
     grid-template-columns: 1fr;
   }
+}
+   .wrapping-section {
+  background: #faf1f5;
+  border: 1px solid #ead5df;
+  border-radius: 16px;
+  padding: 25px;
+  margin-top: 30px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.wrapping-section h2 {
+  color: #a86f7c;
+}
+
+.wrapping-section select {
+  padding: 12px;
+  border: 1px solid #d7b8c6;
+  border-radius: 10px;
+  background: white;
+  font-size: 16px;
+  width: 220px;
+  max-width: 100%;
 }
   <style>
     body {
@@ -195,7 +219,20 @@ h2 {
          oninput="calculatePrice()">
 </div>
           </div>
+<div class="wrapping-section">
+  <h2>Choose Your Bouquet Wrapping</h2>
 
+  <p>Select your preferred wrapping color:</p>
+
+  <select id="wrappingColor">
+    <option value="White">White</option>
+    <option value="Pink">Pink</option>
+    <option value="Black">Black</option>
+    <option value="Beige">Beige</option>
+    <option value="Burgundy">Burgundy</option>
+    <option value="Lavender">Lavender</option>
+  </select>
+</div>
   <h2>Total: <span id="total">0</span> AED</h2>
         <div style="text-align: center; margin-top: 25px;">
   <button
