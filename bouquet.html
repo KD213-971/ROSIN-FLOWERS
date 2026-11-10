@@ -123,12 +123,22 @@ h2 {
           <div class="flower-card">
 <img src="images/rose.jpg" alt="Roses" class="flower-image">
   <label>Roses - 8 AED each</label>
-        <select id="roseColor">
-  <option value="Red">Red</option>
-  <option value="Pink">Pink</option>
-  <option value="White">White</option>
-  <option value="Peach">Peach</option>
-</select>
+   <div class="rose-colors">
+  <label>Choose Rose Colors:</label>
+
+  <select id="roseColor">
+    <option value="Red">Red</option>
+    <option value="Pink">Pink</option>
+    <option value="White">White</option>
+    <option value="Peach">Peach</option>
+  </select>
+
+  <button type="button" onclick="addRoseColor()">
+    + Add Another Color
+  </button>
+
+  <div id="extraRoseColors"></div>
+</div>
   <input type="number" id="roses"
          min="0" value="0"
          oninput="calculatePrice()">
