@@ -87,24 +87,38 @@
 
 <script>
 function calculatePrice() {
-  const roses = Math.max(0, Number(
-    document.getElementById("roses").value
-  ) || 0);
+  const roses = Math.max(0, Math.floor(
+    Number(document.getElementById("roses").value) || 0
+  ));
 
-  const tulips = Math.max(0, Number(
-    document.getElementById("tulips").value
-  ) || 0);
+  const tulips = Math.max(0, Math.floor(
+    Number(document.getElementById("tulips").value) || 0
+  ));
 
-  const lilies = Math.max(0, Number(
-    document.getElementById("lilies").value
-  ) || 0);
+  const lilies = Math.max(0, Math.floor(
+    Number(document.getElementById("lilies").value) || 0
+  ));
 
-  const total = roses * 8
-              + tulips * 12
-              + lilies * 20;
+  const maxStems = Number(
+    document.getElementById("bouquetSize").value
+  );
 
-  document.getElementById("total").textContent =
-    total;
+  const totalStems = roses + tulips + lilies;
+  const total = roses * 8 + tulips * 12 + lilies * 20;
+
+  const message = document.getElementById("sizeMessage");
+
+  if (totalStems > maxStems) {
+    message.textContent =
+      "Too many flowers! Maximum: " + maxStems;
+    message.style.color = "red";
+  } else {
+    message.textContent =
+      totalStems + " of " + maxStems + " stems selected";
+    message.style.color = "#65434b";
+  }
+
+  document.getElementById("total").textContent = total;
 }
 </script>
     </div>
