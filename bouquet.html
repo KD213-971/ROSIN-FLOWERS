@@ -43,6 +43,53 @@
       <h1>Build Your Own Bouquet</h1>
       <p>Choose your favorite flowers and colors.</p>
       <p>Your perfect bouquet starts here.</p>
+      <div style="margin-top:30px;">
+  <h2>Choose Your Flowers</h2>
+
+  <label>Roses - 8 AED each</label>
+  <input type="number" id="roses"
+         min="0" value="0"
+         oninput="calculatePrice()">
+
+  <br><br>
+
+  <label>Tulips - 12 AED each</label>
+  <input type="number" id="tulips"
+         min="0" value="0"
+         oninput="calculatePrice()">
+
+  <br><br>
+
+  <label>Lilies - 20 AED each</label>
+  <input type="number" id="lilies"
+         min="0" value="0"
+         oninput="calculatePrice()">
+
+  <h2>Total: <span id="total">0</span> AED</h2>
+</div>
+
+<script>
+function calculatePrice() {
+  const roses = Math.max(0, Number(
+    document.getElementById("roses").value
+  ) || 0);
+
+  const tulips = Math.max(0, Number(
+    document.getElementById("tulips").value
+  ) || 0);
+
+  const lilies = Math.max(0, Number(
+    document.getElementById("lilies").value
+  ) || 0);
+
+  const total = roses * 8
+              + tulips * 12
+              + lilies * 20;
+
+  document.getElementById("total").textContent =
+    total;
+}
+</script>
     </div>
   </main>
 </body>
