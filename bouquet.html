@@ -44,7 +44,16 @@
       <p>Choose your favorite flowers and colors.</p>
       <p>Your perfect bouquet starts here.</p>
       <div style="margin-top:30px;">
-  <h2>Choose Your Flowers</h2>
+<h2>Choose Bouquet Size</h2>
+
+<select id="bouquetSize" onchange="calculatePrice()">
+  <option value="10">Small - Up to 10 stems</option>
+  <option value="20">Medium - Up to 20 stems</option>
+  <option value="35">Large - Up to 35 stems</option>
+</select>
+
+<p id="sizeMessage"></p>
+        <h2>Choose Your Flowers</h2>
 
   <label>Roses - 8 AED each</label>
         <select id="roseColor">
