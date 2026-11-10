@@ -71,6 +71,37 @@
   width: 220px;
   max-width: 100%;
 }
+   .gift-section {
+  background: #faf1f5;
+  border: 1px solid #ead5df;
+  border-radius: 16px;
+  padding: 25px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.gift-section h2 {
+  color: #a86f7c;
+}
+
+.gift-section select,
+.gift-section textarea {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 12px auto;
+  padding: 12px;
+  border: 1px solid #d7b8c6;
+  border-radius: 10px;
+  background: white;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+#giftMessageBox {
+  margin-top: 20px;
+}
   <style>
     body {
       margin: 0;
@@ -232,6 +263,26 @@ h2 {
     <option value="Burgundy">Burgundy</option>
     <option value="Lavender">Lavender</option>
   </select>
+</div>
+        <div class="gift-section">
+  <h2>Add a Gift Card</h2>
+
+  <label for="giftCard">Would you like a gift card?</label>
+
+  <select id="giftCard" onchange="toggleGiftMessage()">
+    <option value="No">No, thank you</option>
+    <option value="Yes">Yes, add a gift card</option>
+  </select>
+
+  <div id="giftMessageBox" style="display: none;">
+    <label for="giftMessage">Your Personal Message</label>
+
+    <textarea
+      id="giftMessage"
+      rows="4"
+      maxlength="300"
+      placeholder="Write your special message here..."></textarea>
+  </div>
 </div>
   <h2>Total: <span id="total">0</span> AED</h2>
         <div style="text-align: center; margin-top: 25px;">
@@ -471,6 +522,13 @@ const wrappingColor = document.getElementById("wrappingColor").value;
     "?text=" + encodeURIComponent(message);
 
   window.open(url, "_blank");
+}
+  function toggleGiftMessage() {
+  const giftCard = document.getElementById("giftCard").value;
+  const messageBox = document.getElementById("giftMessageBox");
+
+  messageBox.style.display =
+    giftCard === "Yes" ? "block" : "none";
 }
 </script>
     </div>
