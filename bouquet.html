@@ -152,6 +152,10 @@ h2 {
   <option value="Yellow">Yellow</option>
   <option value="Purple">Purple</option>
 </select>
+            <button type="button" onclick="addFlowerColor('tulip')">
+  + Add Another Color
+</button>
+<div id="extraTulipColors"></div>
   <input type="number" id="tulips"
          min="0" value="0"
          oninput="calculatePrice()">
@@ -164,6 +168,10 @@ h2 {
   <option value="Pink">Pink</option>
   <option value="Yellow">Yellow</option>
 </select>
+            <button type="button" onclick="addFlowerColor('lily')">
+  + Add Another Color
+</button>
+<div id="extraLilyColors"></div>
   <input type="number" id="lilies"
          min="0" value="0"
          oninput="calculatePrice()">
@@ -234,6 +242,56 @@ function calculatePrice() {
     </button>
   `;
 
+  container.appendChild(row);
+}
+  function addFlowerColor(type) {
+  const settings = {
+    tulip: {
+      container: "extraTulipColors",
+      colors: ["Pink", "White", "Yellow", "Purple"]
+    },
+    lily: {
+      container: "extraLilyColors",
+      colors: ["White", "Pink", "Yellow"]
+    }
+  };
+
+  const setting = settings[type];
+  if (!setting) return;
+
+  const container = document.getElementById(setting.container);
+  if (!container) return;
+
+  const row = document.createElement("div");
+  row.style.marginTop = "10px";
+
+  const select = document.createElement("select");
+  select.className = "extraFlowerColor";
+
+  setting.colors.forEach(color => {
+    const option = document.createElement("option");
+    option.value = color;
+    option.textContent = color;
+    select.appendChild(option);
+  });
+
+  const quantity = document.createElement("input");
+  quantity.type = "number";
+  quantity.min = "0";
+  quantity.value = "0";
+  quantity.className = "extraFlowerQty";
+  quantity.dataset.flower = type;
+  quantity.addEventListener("input", calculatePrice);
+
+  const remove = document.createElement("button");
+  remove.type = "button";
+  remove.textContent = "Remove";
+  remove.onclick = function() {
+    row.remove();
+    calculatePrice();
+  };
+
+  row.append(select, quantity, remove);
   container.appendChild(row);
 }
 </script>
