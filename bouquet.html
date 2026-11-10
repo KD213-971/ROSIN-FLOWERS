@@ -59,6 +59,16 @@ h2 {
   color: #a86f7c;
   font-weight: bold;
 }    }
+    .flower-image {
+  display: block;
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  background: white;
+  border-radius: 15px;
+  margin: 20px auto 10px;
+  box-shadow: 0 4px 15px #00000012;
+}
   </style>
 </head>
 <body>
@@ -82,7 +92,7 @@ h2 {
 
 <p id="sizeMessage"></p>
         <h2>Choose Your Flowers</h2>
-
+<img src="images/rose.jpg" alt="Roses" class="flower-image">
   <label>Roses - 8 AED each</label>
         <select id="roseColor">
   <option value="Red">Red</option>
@@ -95,7 +105,7 @@ h2 {
          oninput="calculatePrice()">
 
   <br><br>
-
+<img src="images/tulip.jpg" alt="Tulips" class="flower-image">
   <label>Tulips - 12 AED each</label>
         <select id="tulipColor">
   <option value="Pink">Pink</option>
@@ -108,7 +118,7 @@ h2 {
          oninput="calculatePrice()">
 
   <br><br>
-
+<img src="images/lily.jpg" alt="Lilies" class="flower-image">
   <label>Lilies - 20 AED each</label>
         <select id="lilyColor">
   <option value="White">White</option>
