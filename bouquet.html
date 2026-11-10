@@ -202,6 +202,13 @@ h2 {
   margin: 20px auto 10px;
   box-shadow: 0 4px 15px #00000012;
 }
+   .delivery-note {
+  text-align: center;
+  color: #8a6570;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 10px 0 20px;
+}
   </style>
 </head>
 <body>
@@ -348,6 +355,12 @@ h2 {
   </select>
 </div>
   <h2>Total: <span id="total">0</span> AED</h2>
+        <p class="delivery-note">
+  Flower Total: Excluding Delivery Fees
+  <br>
+  Delivery fees will be confirmed via WhatsApp
+  based on the delivery location.
+</p>
         <div style="text-align: center; margin-top: 25px;">
   <button
     type="button"
@@ -622,7 +635,9 @@ const deliveryDetails =
 "\n\nWrapping Color: " + wrappingColor +
 giftDetails +
 "\nTotal Stems: " + stems 
-    "\nTotal Price: " + total + " AED";
+    "\nFlower Total: " + total + " AED" +
+"\nDelivery Fee: To be confirmed" +
+"\nFinal Total: To be confirmed by ROSIN";
 
   const url = "https://wa.me/" + phone +
     "?text=" + encodeURIComponent(message);
