@@ -3,8 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Build Your Bouquet | ROSIN</title>
+  <title>Build Your Bouquet | ROSIN</title>  
  <style>
+   .order-button {
+  background: #a86f7c;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 16px 35px;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.order-button:hover {
+  background: #875460;
+}
+   
   .flower-image {
   width: 100%;
   height: 150px;
@@ -179,6 +195,11 @@ h2 {
           </div>
 
   <h2>Total: <span id="total">0</span> AED</h2>
+        <button type="button"
+        onclick="sendWhatsAppOrder()"
+        class="order-button">
+  Order via WhatsApp
+</button>
 </div>
 
 <script>
@@ -305,6 +326,108 @@ function calculatePrice() {
 
   row.append(select, quantity, remove);
   container.appendChild(row);
+}
+  function sendWhatsAppOrder() {
+  const phone = "971505331824";
+
+  const getQty = (id) => {
+    const el = document.getElementById(id);
+    return Math.max(0, Math.floor(Number(el.value) || 0));
+  };
+
+  const flowers = [
+    {
+      name: "Roses",
+      qtyId: "roses",
+      colorId: "roseColor",
+      extra: "#extraRoseColors",
+      price: 8
+    },
+    {
+      name: "Tulips",
+      qtyId: "tulips",
+      colorId: "tulipColor",
+      extra: "#extraTulipColors",
+      price: 12
+    },
+    {
+      name: "Lilies",
+      qtyId: "lilies",
+      colorId: "lilyColor",
+      extra: "#extraLilyColors",
+      price: 20
+    }
+  ];
+
+  const maxStems = Number(
+    document.getElementById("bouquetSize").value
+  );
+
+  let stems = 0;
+  let total = 0;
+  let details = [];
+
+  flowers.forEach(flower => {
+    const entries = [];
+
+    const mainQty = getQty(flower.qtyId);
+    const mainColor =
+      document.getElementById(flower.colorId).value;
+
+    if (mainQty > 0) {
+      entries.push([mainColor, mainQty]);
+    }
+
+    document.querySelectorAll(
+      flower.extra + " > div"
+    ).forEach(row => {
+      const color = row.querySelector("select");
+      const qty = row.querySelector('input[type="number"]');
+
+      if (color && qty) {
+        const amount = Math.max(
+          0, Math.floor(Number(qty.value) || 0)
+        );
+        if (amount > 0) {
+          entries.push([color.value, amount]);
+        }
+      }
+    });
+
+    entries.forEach(([color, qty]) => {
+      stems += qty;
+      total += qty * flower.price;
+      details.push(
+        flower.name + " - " + color + ": " + qty
+      );
+    });
+  });
+
+  if (stems === 0) {
+    alert("Please select your flowers first.");
+    return;
+  }
+
+  if (stems > maxStems) {
+    alert("Please reduce the number of flowers.");
+    return;
+  }
+
+  const size = document.getElementById(
+    "bouquetSize"
+  ).selectedOptions[0].text;
+
+  const message =
+    "Hello ROSIN! I would like to order a bouquet.\n\n" +
+    "Bouquet Size: " + size + "\n\n" +
+    details.join("\n") +
+    "\n\nTotal Stems: " + stems +
+    "\nTotal Price: " + total + " AED";
+
+  const url = "https://wa.me/" + phone +
+    "?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank");
 }
 </script>
     </div>
