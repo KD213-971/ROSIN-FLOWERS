@@ -162,6 +162,7 @@ h2 {
           <div class="flower-card">
 <img src="images/tulip.jpg" alt="Tulips" class="flower-image">
   <label>Tulips - 12 AED each</label>
+            <label>Choose Tulip Colors:</label>
         <select id="tulipColor">
   <option value="Pink">Pink</option>
   <option value="White">White</option>
@@ -179,6 +180,7 @@ h2 {
           <div class="flower-card">
 <img src="images/lily.jpg" alt="Lilies" class="flower-image">
   <label>Lilies - 20 AED each</label>
+            <label>Choose Lily Colors:</label>
         <select id="lilyColor">
   <option value="White">White</option>
   <option value="Pink">Pink</option>
@@ -195,6 +197,14 @@ h2 {
           </div>
 
   <h2>Total: <span id="total">0</span> AED</h2>
+        <div style="text-align: center; margin-top: 25px;">
+  <button
+    type="button"
+    class="order-button"
+    onclick="sendWhatsAppOrder()">
+    Order via WhatsApp
+  </button>
+</div>
         <button type="button"
         onclick="sendWhatsAppOrder()"
         class="order-button">
