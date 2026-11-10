@@ -208,6 +208,34 @@ function calculatePrice() {
 
   document.getElementById("total").textContent = total;
 }
+  function addRoseColor() {
+  const container = document.getElementById("extraRoseColors");
+
+  const row = document.createElement("div");
+  row.style.marginTop = "10px";
+
+  row.innerHTML = `
+    <select class="extraRoseColor">
+      <option value="Red">Red</option>
+      <option value="Pink">Pink</option>
+      <option value="White">White</option>
+      <option value="Peach">Peach</option>
+    </select>
+
+    <input type="number"
+           class="extraRoseQty"
+           min="0"
+           value="0"
+           oninput="calculatePrice()">
+
+    <button type="button"
+            onclick="this.parentElement.remove(); calculatePrice();">
+      Remove
+    </button>
+  `;
+
+  container.appendChild(row);
+}
 </script>
     </div>
   </main>
